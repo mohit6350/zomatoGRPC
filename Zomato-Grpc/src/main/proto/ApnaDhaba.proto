@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package com.apnadhaba.services;
+
+message OrderRequest{
+  string userName = 1;
+  string orderItem = 2;
+  string address = 3;
+  string transactionDate = 4;
+  float amount = 5;
+}
+
+message OrderResponse{
+  string confirmation = 1;
+  string assignedDeliveryPerson = 2;
+  Bill bill = 3;
+}
+
+message Bill{
+  double totalAmount = 1;
+  string generatedDate = 2;
+  double tax = 3;
+  double amount = 4;
+  double discount = 5;
+  double packingCharges = 6;
+}
+
+service OrderFoodService{
+   rpc orderFoodOnline(OrderRequest) returns (OrderResponse);
+}
